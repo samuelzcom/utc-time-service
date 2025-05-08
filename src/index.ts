@@ -15,12 +15,13 @@ export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 		switch (url.pathname) {
-			case '/hello':
-				return new Response('Hello, World!');
-			case '/random':
-				return new Response(crypto.randomUUID());
-			case '/utc-time':
+			case '/api/utc-time':
 				return new Response(JSON.stringify({ utcTime: new Date().toISOString() }), { status: 200 });
+			// Add more test routes here
+			case '/api/hello':
+				return new Response('Hello, World!');
+			case '/api/random':
+				return new Response(crypto.randomUUID());
 			default:
 				return new Response('Not Found', { status: 404 });
 		}
