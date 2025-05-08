@@ -15,10 +15,12 @@ export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 		switch (url.pathname) {
-			case '/message':
+			case '/hello':
 				return new Response('Hello, World!');
 			case '/random':
 				return new Response(crypto.randomUUID());
+			case '/utc-time':
+				return new Response(new Date().toUTCString());
 			default:
 				return new Response('Not Found', { status: 404 });
 		}
