@@ -20,7 +20,7 @@ export default {
 			case '/random':
 				return new Response(crypto.randomUUID());
 			case '/utc-time':
-				return new Response(new Date().toUTCString());
+				return new Response(JSON.stringify({ utcTime: new Date().toISOString() }), { status: 200 });
 			default:
 				return new Response('Not Found', { status: 404 });
 		}
